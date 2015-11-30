@@ -1,0 +1,168 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 18, 2015, 3:18:50 PM
+    Author     : MaRoy
+*/
+a:active {
+	outline: none;
+}
+
+a:focus {
+	-moz-outline-style: none;
+}
+
+#tabs_container {
+	width: 1000px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+#tabs_container ul.tabs {
+	list-style: none;
+	border-bottom: 1px solid #ccc;
+	height: 21px;
+	margin: 0;
+}
+
+#tabs_container ul.tabs li {
+	float: left;
+}
+
+#tabs_container ul.tabs li a {
+	padding: 3px 10px;
+	display: block;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	margin-right: 2px;
+	text-decoration: none;
+	background-color: #efefef;
+}
+
+#tabs_container ul.tabs li.active a {
+	background-color: #fff;
+	padding-top: 4px;
+}
+
+div.tab_contents_container {
+	border: 1px solid #ccc;
+	border-top: none;
+	padding: 10px;
+}
+
+div.tab_contents {
+	display: none;
+}
+
+div.tab_contents_active {
+	display: block;
+}
+
+div.clear {
+	clear: both;
+}
+
+#extractorwrapper {
+	border: 2px solid #0B85A1;
+	background-color: #ebfbfa;
+	height: 600px;
+	width: 960px;
+}
+
+#extractorwrapper div.boxgrp {
+	width: 850px;
+	float: left;
+	margin: 50px 0 0 50px;
+}
+
+#extractorwrapper div.boxgrp div.box {
+	background-color: #d3e1e1;
+	border: 2px solid;
+	width: 400px;
+}
+#cleanupwrapper {
+	border: 2px solid #0B85A1;
+	background-color: aqua;
+	height: 100px;
+	width: 960px;
+}
+#dragandrophandler {
+	border: 2px dotted #0B85A1;
+	width: 300px;
+	height: 300px;
+	color: #92AAB0;
+	text-align: center;
+	vertical-align: auto;
+	padding: 10px 10px 10px 10px;
+	margin-bottom: 10px;
+	font-size: 200%;
+	background-color: aqua;
+}
+
+.progressBar {
+	width: 200px;
+	height: 22px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	overflow: hidden;
+	display: inline-block;
+	margin: 0px 10px 5px 5px;
+	vertical-align: top;
+}
+
+.progressBar div {
+	height: 100%;
+	color: #fff;
+	text-align: right;
+	line-height: 22px;
+	/* same as #progressBar height if we want text middle aligned */
+	width: 0;
+	background-color: #0ba1b5;
+	border-radius: 3px;
+}
+
+.statusbar {
+	border-top: 1px solid #A9CCD1;
+	min-height: 25px;
+	width: 700px;
+	padding: 10px 10px 0px 10px;
+	vertical-align: top;
+}
+
+.statusbar:nth-child(odd) {
+	background: #EBEFF0;
+}
+
+.filename {
+	display: inline-block;
+	vertical-align: top;
+	width: 250px;
+}
+
+.filesize {
+	display: inline-block;
+	vertical-align: top;
+	color: #30693D;
+	width: 100px;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.abort {
+	background-color: #A8352F;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	display: inline-block;
+	color: #fff;
+	font-family: arial;
+	font-size: 13px;
+	font-weight: normal;
+	padding: 4px 15px;
+	cursor: pointer;
+	vertical-align: top
+}

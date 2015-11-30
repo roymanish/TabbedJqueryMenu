@@ -1,0 +1,328 @@
+<html><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TestScript Extractor</title>
+<link href="DBUnit.css" rel="stylesheet" type="text/css">
+<script src="jquery-1.7.2.js"></script>
+<script src="DBUnit.js"></script>
+</head>
+<body cz-shortcut-listen="true">
+	
+
+	<script>
+		// wait for the DOM to be loaded 
+		$(document).ready(function() {
+			// bind 'myForm' and provide a simple callback function
+			if({"db.password":"LM2016","values":"222","exclude.table.patterns":"FACILITY,ENGINE_*,*_PAY*,*_INC*,E_EMP_DTL,UCL_USER","column":"EMP_PERF_SMRY_ID","db.username":"LM2016","facility.timezone":"America/New_York","db.timezone":"America/New_York","output.file.path":"C:\\output","feeder.file.path":"C:\\\\GIT\\\\SCPP_Latest\\\\lm-source\\\\LM\\\\LaborCore\\\\LMCore\\\\JavaSource\\\\test\\\\resources\\\\testdata\\\\spreadsheets\\\\lm\\\\lmcore/LMMetaData.xls","db.hostname":"10.80.16.189","date.offset":"-2","db.type":"oracle","module.name":"LMDEV1","db.schema":"ORA189","output.file.name":"UITestDemo","split.results":"true","db.port":"1521","table":"E_EMP_PERF_SMRY","split.files":"false","replace":"true"}){
+				var jsonStr = {"db.password":"LM2016","values":"222","exclude.table.patterns":"FACILITY,ENGINE_*,*_PAY*,*_INC*,E_EMP_DTL,UCL_USER","column":"EMP_PERF_SMRY_ID","db.username":"LM2016","facility.timezone":"America/New_York","db.timezone":"America/New_York","output.file.path":"C:\\output","feeder.file.path":"C:\\\\GIT\\\\SCPP_Latest\\\\lm-source\\\\LM\\\\LaborCore\\\\LMCore\\\\JavaSource\\\\test\\\\resources\\\\testdata\\\\spreadsheets\\\\lm\\\\lmcore/LMMetaData.xls","db.hostname":"10.80.16.189","date.offset":"-2","db.type":"oracle","module.name":"LMDEV1","db.schema":"ORA189","output.file.name":"UITestDemo","split.results":"true","db.port":"1521","table":"E_EMP_PERF_SMRY","split.files":"false","replace":"true"};
+				var inputs = $('input', '#myform').each(function() {
+					if (jsonStr[this.name]) {
+						this.value = jsonStr[this.name];
+					}
+				});
+			}
+			
+			var currTab = localStorage.getItem("tab");
+			if(currTab){
+			
+				showTab($('a[name="' + currTab + '"]'));
+			}
+			 // Set up a listener so that when anything with a class of 'tab' 
+			 // is clicked, this function is run.
+			 $('.tab').click(function () {
+				
+				showTab(this);
+				var tab = $(this).attr("name");
+				localStorage.setItem("tab", tab);
+			 });
+			 
+			 function showTab(tab) {
+			 	// Remove the 'active' class from the active tab.
+			 	$('#tabs_container > .tabs > li.active')
+			 	.removeClass('active');
+
+			 	// Add the 'active' class to the clicked tab.
+			 	$(tab).parent().addClass('active');
+
+			 	// Remove the 'tab_contents_active' class from the visible tab contents.
+			 	$('#tabs_container > .tab_contents_container > div.tab_contents_active')
+			 	.removeClass('tab_contents_active');
+
+			 	// Add the 'tab_contents_active' class to the associated tab contents.
+				if(tab.rel)
+					$(tab.rel).addClass('tab_contents_active');
+				else
+					$(tab[0].rel).addClass('tab_contents_active');
+			 }
+			 var obj = $("#dragandrophandler");
+			 obj.on('dragenter', function (e) 
+			 {
+			     e.stopPropagation();
+			     e.preventDefault();
+			     $(this).css('border', '2px solid #0B85A1');
+			 });
+			 obj.on('dragover', function (e) 
+			 {
+			      e.stopPropagation();
+			      e.preventDefault();
+			 });
+			 obj.on('drop', function (e) 
+			 {
+			  
+			      $(this).css('border', '2px dotted #0B85A1');
+			      e.preventDefault();
+			      var files = e.originalEvent.dataTransfer.files;
+			  
+			      //We need to send dropped files to Server
+			      var moduleName = document.getElementsByName('module.name')[0].value;
+			      handleFileUpload('blrlw3450.asia.manh.com:10000',files,obj,moduleName);
+			 });
+			 $(document).on('dragenter', function (e) 
+			 {
+			     e.stopPropagation();
+			     e.preventDefault();
+			 });
+			 $(document).on('dragover', function (e) 
+			 {
+			   e.stopPropagation();
+			   e.preventDefault();
+			   obj.css('border', '2px dotted #0B85A1');
+			 });
+			 $(document).on('drop', function (e) 
+			 {
+			     e.stopPropagation();
+			     e.preventDefault();
+			 });
+		});
+		
+	</script>
+	<!-- This is the box that all of the tabs and contents of 
+             the tabs will reside -->
+	<div id="tabs_container">
+
+		<!-- These are the tabs -->
+		<ul class="tabs">
+			<li class="active"><a href="#" rel="#tab_1_contents" class="tab" name="exporter">Exporter</a>
+			</li>
+			<li><a href="#" rel="#tab_2_contents" name = "uploader" class="tab">Uploader</a></li>
+			<li><a href="#" rel="#tab_3_contents" class="tab" name="cleanup">Clean Up</a></li>
+			<li><a href="#" rel="#tab_4_contents" class="tab" name="etestcases">Existing Test Cases</a></li>
+		</ul>
+
+		<!-- This is used so the contents don't appear to the 
+                 right of the tabs -->
+		<div class="clear"></div>
+
+		<!-- This is a div that hold all the tabbed contents -->
+		<div class="tab_contents_container">
+
+			<!-- Tab 1 Contents -->
+			<div id="tab_1_contents" class="tab_contents tab_contents_active">
+				<div align="center">
+					<b>Test Data Extractor Tool</b>
+					<form id="myform" action="TestExtractor.jsp" method="post">
+						<div align="center" id="extractorwrapper">
+							<div class="boxgrp" align="center">
+								<div class="box" style="float: left">
+									<table>
+										<tbody><tr>
+											<th colspan="2">DB Details</th>
+										</tr>
+										<tr>
+											<td>DB Type :</td>
+											<td><input type="text" name="db.type"></td>
+										</tr>
+										<tr>
+											<td>Hostname :</td>
+											<td><input type="text" name="db.hostname"></td>
+										</tr>
+										<tr>
+											<td>Port :</td>
+											<td><input type="text" name="db.port"></td>
+										</tr>
+										<tr>
+											<td>Schema :</td>
+											<td><input type="text" name="db.schema"></td>
+										</tr>
+										<tr>
+											<td>Username :</td>
+											<td><input type="text" name="db.username"></td>
+										</tr>
+										<tr>
+											<td>Password :</td>
+											<td><input type="text" name="db.password"></td>
+										</tr>
+										<tr>
+											<td>DB Timezone :</td>
+											<td><input type="text" name="db.timezone" value="America/New_York"></td>
+										</tr>
+										<tr>
+											<td>Facility Timezone :</td>
+											<td><input type="text" name="facility.timezone" value="America/New_York"></td>
+										</tr>
+									</tbody></table>
+								</div>
+
+								<div class="box" style="margin-left: 450px">
+									<table>
+										<tbody><tr>
+											<th colspan="2">Table Information</th>
+										</tr>
+										<tr>
+											<td>Table Name :</td>
+											<td><input type="text" name="table"></td>
+										</tr>
+										<tr>
+											<td>Values :</td>
+											<td><input type="text" name="values"></td>
+										</tr>
+										<tr>
+											<td>Column :</td>
+											<td><input type="text" name="column"></td>
+										</tr>
+										<tr>
+											<td>Replace Flag :</td>
+											<td><input type="text" name="replace" value="true"></td>
+										</tr>
+									</tbody></table>
+								</div>
+								<br><br><br>
+								<div class="box" style="margin-left: 450px">
+									<table>
+										<tbody><tr>
+											<th colspan="2">Metadata</th>
+										</tr>
+										<tr>
+											<td>Metadata File Path :</td>
+											<td><input type="text" name="feeder.file.path"></td>
+										</tr>
+										
+									</tbody></table>
+								</div>
+							</div>
+							<div class="boxgrp" align="center">
+								<div class="box" style="float: left">
+									<table>
+										<tbody><tr>
+											<th colspan="2">Parsing Conditions</th>
+										</tr>										
+										<tr>
+											<td>Date Offset :</td>
+											<td><input type="text" name="date.offset" value="-2"></td>
+										</tr>
+										<tr>
+											<td>Split Results :</td>
+											<td><input type="text" name="split.results" value="true"></td>
+										</tr>
+										<tr>
+											<td>Split Files :</td>
+											<td><input type="text" name="split.files" value="false"></td>
+										</tr>
+										<tr>
+											<td>Exclude Table Patterns :</td>
+											<td><input type="text" name="exclude.table.patterns"></td>
+										</tr>
+									</tbody></table>
+								</div>
+								<div class="box" style="margin-left: 450px">
+									<table>
+										<tbody><tr>
+											<th colspan="2">Output Details</th>
+										</tr>
+										<tr>
+											<td>Module Name :</td>
+											<td><input type="text" name="module.name"></td>
+										</tr>										
+										<tr>
+											<td>Output Path :</td>
+											<td><input type="text" name="output.file.path"></td>
+										</tr>
+										<tr>
+											<td>Output File Name :</td>
+											<td><input type="text" name="output.file.name"></td>
+										</tr>
+									</tbody></table>
+								</div>
+							</div>
+							<div align="center" style="width: 850px; margin: 50px 0 0 50px; float: left">
+								<input type="submit" value="Extract" align="middle">
+								<input type="submit" name="btnRunTests" value="Run Tests">
+								<div align="left"><font color="green"><b>Properties File Path : </b>C:\GIT\SCPP_Latest\scpp-server\runtime\scope.war/testdata/properties/extractor.properties<br><b>Output File Path  : </b>C:\output\UITestDemo</font>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- Tab 2 Contents -->
+			<div id="tab_2_contents" class="tab_contents">
+			<div class="table" style="margin-left: 15px">
+			<table>
+										<tbody><tr>
+											<th colspan="2">Test Case Details</th>
+										</tr>
+										<tr>
+											<td>Module Name :</td>
+											<td><input type="text" name="module.name"></td>
+										</tr>
+										<tr>
+											<td>Test Script File Name :</td>
+											<td><input type="text" name="testscript.file.name"></td>
+										</tr>
+									</tbody></table>
+									</div>
+				<div id="dragandrophandler">Drag &amp; Drop Files Here</div>
+				<br> <br>
+				<div id="status1"></div>
+			</div>
+
+			<!-- Tab 3 Contents -->
+			<div id="tab_3_contents" class="tab_contents">
+				<b style="text-align: center;">Clean Up Test Data</b>
+				<div id="cleanupwrapper">
+					<form action="TestExtractor.jsp" style="margin: 15px 0 0 15px">
+						Warehouse : <input type="text" name="clnUpWhse" placeholder="Enter whse code">
+						User Id(s)   : <input type="text" name="clnUpUserId" placeholder="Login User Ids comma separated">
+						Config Data Starts with Pattern   : <input type="text" name="clnConfigDataPattern" placeholder="For Ex: HTT">
+						<input type="submit" name="btnCleanUp" value="Clean Up">
+					</form>
+					<div style="margin: 15px 0 0 15px"></div>
+				</div>
+			</div>
+			<!-- Tab 4 Contents -->
+			<div id="tab_4_contents" class="tab_contents">
+				<b style="text-align: center;">List of Test Cases</b>
+				<div id="testCaseListWrapper">
+					<form action="TestExtractor.jsp" style="margin: 15px 0 0 15px">
+						<div class="table" style="margin-left: 15px">
+									<table border="1">
+									
+										<tbody><tr>
+											<th>Select</th>
+											<th>Module</th>
+											<th>Test Case Script</th>
+										</tr>
+										<tr>
+											<td><input type="checkbox" name="testCaseId" value="/lm/lmcore/Thruput/ThruputTestScript.xml"></td>
+											<td>Thruput</td>
+											<td>/lm/lmcore/Thruput/ThruputTestScript.xml</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" name="testCaseId" value="/lm/lmcore/Events/WF_EVENTS_TCSCRIPT.xml"></td>
+											<td>Events_WF</td>
+											<td>/lm/lmcore/Events/WF_EVENTS_TCSCRIPT.xml</td>
+										</tr>
+										
+									</tbody></table>
+								</div>
+								<br>
+						<input type="submit" name="btnRunModuleTestCases" value="Run Test Cases">
+					</form>
+					<div style="margin: 15px 0 0 15px"></div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body></html>
